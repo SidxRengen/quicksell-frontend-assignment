@@ -1,7 +1,12 @@
 import React from "react";
-import backlog_icon from "../../assets/Backlog.svg";
-import add_icon from "../../assets/add.svg";
-import dots from "../../assets/3_dot_menu.svg";
+import add_icon from "../../../assets/add.svg";
+import dots from "../../../assets/3_dot_menu.svg";
+import ComponentCard from "../Component_Card/ComponentCard";
+import no_priority from "../../../assets/No-priority.svg";
+import low_priority from "../../../assets/Low_Priority.svg";
+import mid_priority from "../../../assets/Medium_Priority.svg";
+import high_priority from "../../../assets/High_Priority.svg";
+import urgent_priority from "../../../assets/Urgent_Priority_colour.svg";
 
 function Priority_Compenent({ tickets, priority }) {
   return (
@@ -9,13 +14,43 @@ function Priority_Compenent({ tickets, priority }) {
       <div className="priority__component">
         <div className="priority__component__header">
           <div className="priority__component__header__subheader">
-            <span>
-              {(priority === 0 && "No priority") ||
-                (priority === 1 && "Low") ||
-                (priority === 2 && "Midium") ||
-                (priority === 3 && "High") ||
-                (priority === 4 && "Urgent")}
-            </span>
+            <div>
+              {(priority === 0 && (
+                <span className="priority__component__header__subheader1">
+                  {" "}
+                  <img src={no_priority} alt="" />
+                  <span>No priority</span>
+                </span>
+              )) ||
+                (priority === 1 && (
+                  <span className="priority__component__header__subheader1">
+                    {" "}
+                    <img src={low_priority} alt="" />
+                    <span>Low</span>
+                  </span>
+                )) ||
+                (priority === 2 && (
+                  <span className="priority__component__header__subheader1">
+                    {" "}
+                    <img src={mid_priority} alt="" />
+                    <span>Medium</span>
+                  </span>
+                )) ||
+                (priority === 3 && (
+                  <span className="priority__component__header__subheader1">
+                    {" "}
+                    <img src={high_priority} alt="" />
+                    <span>High</span>
+                  </span>
+                )) ||
+                (priority === 4 && (
+                  <span className="priority__component__header__subheader1">
+                    {" "}
+                    <img src={urgent_priority} alt="" />
+                    <span>Urgent</span>
+                  </span>
+                ))}
+            </div>
             <span>{tickets?.length}</span>
           </div>
           <div className="priority__component__header__subheader">
@@ -25,26 +60,7 @@ function Priority_Compenent({ tickets, priority }) {
         </div>
 
         {tickets?.map((ticket) => (
-          <div key={ticket.id} className="priority__component__card">
-            <div className="priority__component__card__header">
-              <span>{ticket.id}</span>
-              <span className="priority__component__card__header__profile">
-                {ticket.userId.substring(0, 2).toUpperCase()}
-              </span>
-            </div>
-            <p className="priority__component__card__content">
-              {ticket.title.length > 50
-                ? ticket.title.substring(0, 47) + "..."
-                : ticket.title}
-            </p>
-            <div className="priority__component__card__footer">
-              <img className="box_border" src={dots} alt="dots" />
-              <div className="items_center box_border">
-                <div className="priority__component__card__footer__dot" />
-                <span>{ticket.tag[0]}</span>
-              </div>
-            </div>
-          </div>
+          <ComponentCard priority="priority" ticket={ticket} />
         ))}
       </div>
     </div>

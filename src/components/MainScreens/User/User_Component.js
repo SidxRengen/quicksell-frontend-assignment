@@ -1,43 +1,30 @@
 import React from "react";
-import add_icon from "../../assets/add.svg";
-import dots from "../../assets/3_dot_menu.svg";
+import add_icon from "../../../assets/add.svg";
+import dots from "../../../assets/3_dot_menu.svg";
+import ComponentCard from "../Component_Card/ComponentCard";
 
 function User_Component({ tickets, userName }) {
   return (
     <div>
-      <div className="priority__component">
-        <div className="priority__component__header">
-          <div className="priority__component__header__subheader">
-            <span>{userName}</span> 
-            <span>{tickets.length}</span> 
+      <div className="user__component">
+        <div className="user__component__header">
+          <div className="user__component__header__subheader">
+            <span className="component_card__component__card__header__profile">
+              {" "}
+              {`${userName?.split(" ")[0][0]}${
+                userName?.split(" ")[1]?.[0] || ""
+              }`.toUpperCase()}
+            </span>
+            <span>{tickets.length}</span>
           </div>
-          <div className="priority__component__header__subheader">
+          <div className="user__component__header__subheader">
             <img src={add_icon} alt="add_icon" />
             <img src={dots} alt="dots" />
           </div>
         </div>
 
-        {tickets.map((ticket) => (
-          <div key={ticket.id} className="priority__component__card">
-            <div className="priority__component__card__header">
-              <span>{ticket.id}</span>
-              <span className="priority__component__card__header__profile">
-                {ticket.userId.substring(0, 2).toUpperCase()}
-              </span>
-            </div>
-            <p className="priority__component__card__content">
-              {ticket.title.length > 50
-                ? ticket.title.substring(0, 47) + "..."
-                : ticket.title}
-            </p>
-            <div className="priority__component__card__footer">
-              <img className="box_border" src={dots} alt="dots" />
-              <div className="items_center box_border">
-                <div className="priority__component__card__footer__dot" />
-                <span>{ticket.tag[0]}</span>
-              </div>
-            </div>
-          </div>
+        {tickets?.map((ticket) => (
+          <ComponentCard user="user" ticket={ticket} />
         ))}
       </div>
     </div>

@@ -1,0 +1,77 @@
+.component_card__component__card {
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  /* padding: 4px 8px; */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  gap: 6px;
+}
+.component_card__component__card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+.component_card__component__card__header__profile {
+  background-color: crimson;
+  color: #fff;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.component_card__component__card__para {
+  display: flex;
+  align-items: center;
+}
+.component_card__component__card__para__content {
+  /* display: flex; */
+  width: 80%;
+}
+.component_card__component__card__para__content__img{
+    width: 10px;
+}
+.component_card__component__card__footer {
+  display: flex;
+  gap: 15px;
+  font-size: 12px !important;
+  align-items: center;
+}
+.component_card__component__card__footer__dot {
+  width: 8px;
+  height: 8px;
+  background-color: #6c757d;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.box_border {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  gap: 6px;
+}
+.component_card__component__card__footer__tag {
+  font-size: 10px;
+}
+.component_card__component__card__title{
+    color: gray;
+}

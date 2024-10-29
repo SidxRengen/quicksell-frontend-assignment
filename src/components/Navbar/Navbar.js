@@ -1,23 +1,49 @@
-import React, { useState } from "react";
-import filter_icon from "../assets/Display.svg";
-import down_arrow from "../assets/down.svg";
+import React, { useEffect, useState } from "react";
+import filter_icon from "../../assets/Display.svg";
+import down_arrow from "../../assets/down.svg";
 import "./Navbar.css";
-function Navbar({ mode, setMode }) {
-  const [show, setShow] = useState(false);
-  const [group, setGroup] = useState("");
-  const [order, setOrder] = useState("");
+function Navbar({ setMode, setOrdering, setShowing, showing }) {
+  const [group, setGroup] = useState(
+    localStorage.getItem("group") || "priority"
+  );
+  const [order, setOrder] = useState(localStorage.getItem("order") || "title");
+  useEffect(() => {
+    setMode(group);
+    setOrdering(order);
+    if (!localStorage.getItem("group")) {
+      localStorage.setItem("group", "priority");
+    }
+    if (!localStorage.getItem("order")) {
+      localStorage.setItem("order", "title");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("group", group);
+  }, [group]);
+
+  useEffect(() => {
+    localStorage.setItem("order", order);
+  }, [order]);
+
   const handleChange = (e) => {
     setMode(e);
     setGroup(e);
   };
+
   return (
     <div className="navbar">
-      <div className="navbar__filter" onClick={() => setShow(!show)}>
+      <div
+        className="navbar__filter"
+        onClick={() => {
+          setShowing(!showing);
+        }}
+      >
         <img src={filter_icon} alt="filter_icon" />
         <span>Display</span>
         <img src={down_arrow} alt="down_icon" />
       </div>
-      {show && (
+      {showing && (
         <div className="navbar__hidden_menu">
           <div className="navbar__hidden_menu__option">
             <span>Grouping</span>{" "}
@@ -37,6 +63,7 @@ function Navbar({ mode, setMode }) {
               value={order}
               onChange={(e) => {
                 setOrder(e.target.value);
+                setOrdering(e.target.value);
               }}
               className="navbar__hidden_menu__option__select"
             >

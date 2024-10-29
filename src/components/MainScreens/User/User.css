@@ -1,8 +1,26 @@
-.User{
-    height: 92vh;
-    padding: 0 2vw;
-    display: flex;
-    gap: 2vw;
-    overflow: auto;
-    background-color: #f4f6fa;
+.user {
+  height: 92vh;
+  padding: 0 2vw;
+  display: flex;
+  gap: 2vw;
+  overflow: auto;
+  background-color: #f4f6fa;
+}
+.user__component {
+  /* width: 20vw; */
+  gap: 2vh;
+  padding-top: 2vh;
+  display: flex;
+  flex-direction: column;
+}
+.user__component__header {
+  font-size: 16px;
+  padding: 0 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.user__component__header__subheader {
+  display: flex;
+  font-size: 14px;
+  gap: 10px;
 }

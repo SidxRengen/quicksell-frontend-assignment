@@ -30,19 +30,31 @@ function App() {
       ...ticket,
       userName: userMap[ticket.userId] || "Unknown User",
     }));
-
     return mergedTickets;
   };
 
   const result = mergeTicketsWithUsers(data);
   console.log("result", result);
   const [mode, setMode] = useState("priority");
+  const [ordering, setOrdering] = useState("priority");
+  const [showing, setShowing] = useState(false);
   return (
-    <div className="App">
-      <Navbar mode={mode} setMode={setMode} />
-      {mode === "status" && <Status data={result} />}
-      {mode === "user" && <User data={result} />}
-      {mode === "priority" && <Priority data={result} />}
+    <div className="app">
+      <Navbar
+        setOrdering={setOrdering}
+        showing={showing}
+        setMode={setMode}
+        setShowing={setShowing}
+      />
+      {mode === "status" && (
+        <Status order={ordering} data={result} setShowing={setShowing} />
+      )}
+      {mode === "user" && (
+        <User order={ordering} data={result} setShowing={setShowing} />
+      )}
+      {mode === "priority" && (
+        <Priority order={ordering} data={result} setShowing={setShowing} />
+      )}
     </div>
   );
 }
